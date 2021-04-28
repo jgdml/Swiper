@@ -144,7 +144,19 @@ public class LevelManager : MonoBehaviour{
         return level.ToArray();
     }
 
-
+    void setSpawnTiles(){
+        tilemapLevel.SetTile(pos, tileHit);
+        pos.y++;
+        pos.x--;
+        tilemapLevel.SetTile(pos, tileHit);
+        pos.y--;
+        tilemapLevel.SetTile(pos, tileHit);
+        pos.x+=2;
+        tilemapLevel.SetTile(pos, tileHit);
+        pos.y++;
+        tilemapLevel.SetTile(pos, tileHit);
+        pos.x--;
+    }
 
     void spawnTiles(){
         var level = makeLevel();
@@ -153,8 +165,7 @@ public class LevelManager : MonoBehaviour{
 
         pos.y -= 21;
 
-        tilemapLevel.SetTile(pos, tileHit);
-        pos.y++;
+        setSpawnTiles();
 
         while (pos.y != 0){
             tilemapPath.SetTile(pos, tile);
