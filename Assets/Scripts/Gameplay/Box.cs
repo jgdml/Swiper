@@ -93,7 +93,7 @@ public class Box : MonoBehaviour{
 
     void writeDirections(){
         for (int i = 0; i< 4; i++){
-            if (swipeInput.getSwipe(directions[i])){
+            if (Input.GetKeyDown(directions[i])){
 
                 inputList.Add(directions[i]);
                 hudManager.pointArrowAt(directions[i]);
@@ -206,6 +206,7 @@ public class Box : MonoBehaviour{
 
 
     void OnCollisionStay2D(Collision2D box){
+        autoTurn();
         crashRoutine(box);
     }
 
